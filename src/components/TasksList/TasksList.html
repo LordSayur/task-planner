@@ -1,0 +1,57 @@
+<div>
+    <table class="tasks">
+      <!-- Header -->
+      <tr class="header">
+        <th class="task-name">Task Name</th>
+        <!-- <th class="task-time-taken">Time Taken</th> -->
+        <th class="task-time">Time</th>
+        <th class="task-action">Action</th>
+      </tr>
+      <!-- Goal -->
+      <tr>
+        <td class="task-name">
+          <input type="text" v-model="goal.name" />
+        </td>
+        <!-- <td class="task-time-taken"></td> -->
+        <td class="task-time">
+          <input type="time" v-model="goal.time" />
+        </td>
+        <td class="task-action"></td>
+      </tr>
+      <!-- Tasks -->
+      <template
+        v-for="(task, index) in computedTasks"
+        :key="task.id"
+        :class="{ active: task.isActive }"
+      >
+        <tr>
+          <td class="task-name">
+            <input type="text" v-model="task.name" :disabled="!task.canEdit" />
+            <div class="task-time-taken">
+              <input
+                type="number"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                v-model="task.timeTaken"
+                :disabled="!task.canEdit"
+              />
+              <span>min{{ task.timeTaken > 1 ? "s" : "" }}</span>
+            </div>
+          </td>
+          <!-- <td class="task-time-taken"></td> -->
+          <td class="task-time">
+            {{ formatTime(task.time) }}
+          </td>
+          <td class="task-action">
+            <button @click="editTask(task.id)">Edit</button>
+          </td>
+        </tr>
+        <tr v-if="task.canEdit" class="task-edit-panel">
+          <td colspan="3">
+            <button @click="addTask(index)">Add</button>
+            <button @click="removeTask(index)">Delete</button>
+          </td>
+        </tr>
+      </template>
+    </table>
+  </div>

@@ -1,0 +1,68 @@
+button {
+	outline: none;
+	background: none;
+	border: 1px solid $secondary;
+	color: $secondary;
+	text-align: center;
+	border-radius: 0.5rem;
+	padding: 0.4rem;
+	margin: 0.3rem;
+}
+table {
+	border-collapse: collapse;
+}
+.tasks {
+	font-size: 1rem;
+	width: 100%;
+	tr {
+		height: 5rem;
+		&.header {
+			height: 3rem;
+		}
+	}
+	td,
+	th {
+		padding: 0.5rem;
+		border: none;
+	}
+	input {
+		border: none;
+		border-bottom: 1px solid $secondary;
+		background: none;
+		font-size: 1rem;
+		color: $secondary;
+		&:focus {
+			outline: none;
+		}
+		&:disabled {
+			border: none;
+		}
+	}
+	.task-name {
+		input {
+			width: 5rem;
+		}
+		width: auto;
+	}
+	.task-time-taken {
+		input {
+			width: 1.5rem;
+		}
+	}
+	.task-time {
+		text-align: center;
+		input {
+			width: 6rem;
+		}
+	}
+	tr.active {
+		border: 2px solid rgba($color: $primary, $alpha: 1);
+		border-radius: 5rem;
+		background: rgba($color: $background, $alpha: 0.1);
+		color: $primary;
+		input {
+			color: $primary;
+			border-color: $primary;
+		}
+	}
+}
