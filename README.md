@@ -1,4 +1,4 @@
-# task-plannar
+# task-planner
 
 ## Project setup
 ```
